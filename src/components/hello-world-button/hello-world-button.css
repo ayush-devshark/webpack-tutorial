@@ -1,0 +1,16 @@
+.hello-world-button {
+    padding: 25px;
+    background-color: blue;
+    color: white;
+    font-size: 18px;
+    outline: none;
+}
+
+.hello-world-button:focus {
+    border: 1px solid blueviolet;
+}
+
+.hello-world-txt {
+    font-size: 28px;
+    text-transform: capitalize;
+}
