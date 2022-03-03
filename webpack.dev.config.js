@@ -10,6 +10,16 @@ module.exports = {
         publicPath: '', // creates path to static files
     },
     mode: 'development',
+    devServer: {
+        port: 9000,
+        static: {
+            directory: path.resolve(__dirname, './dist'),
+        },
+        devMiddleware: {
+            index: 'index.html',
+            writeToDisk: true,
+        },
+    },
     module: {
         // everytime we import an png or jpg file, webpack will check if we hav rule for it. If not a suitable rule, will give an error = "don't know how to import this file"
         rules: [
