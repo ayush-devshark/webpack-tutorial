@@ -17,6 +17,7 @@
         "babel-loader": "^8.2.3",
         "css-loader": "^6.6.0",
         "install": "^0.13.0",
+        "mini-css-extract-plugin": "^2.5.3",
         "sass": "^1.49.9",
         "sass-loader": "^12.6.0",
         "style-loader": "^3.3.1",
