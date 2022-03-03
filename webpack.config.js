@@ -2,13 +2,14 @@ const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'bundle.[contenthash].js', // for caching
         path: path.resolve(__dirname, './dist'), // absolute path
-        publicPath: 'dist/', // creates path to static files
+        publicPath: '', // creates path to static files
     },
     mode: 'none',
     module: {
@@ -49,13 +50,19 @@ module.exports = {
         ],
     },
     plugins: [
-        new TerserPlugin(),
+        new TerserPlugin(), // minimise JS
         new MiniCssExtractPlugin({filename: 'styles.[contenthash].css'}),
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: [
                 '**/*', // remove all files, subfolders inside output folder (i.e. dist folder)
                 path.join(process.cwd(), 'build/**/*'), // remove all files, subfolders inside build folder
             ],
+        }),
+        new HTMLWebpackPlugin({
+            title: 'Hello World',
+            meta: {
+                description: 'Some description',
+            },
         }),
     ],
 };

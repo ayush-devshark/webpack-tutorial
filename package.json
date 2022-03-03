@@ -17,6 +17,7 @@
         "babel-loader": "^8.2.3",
         "clean-webpack-plugin": "^4.0.0",
         "css-loader": "^6.6.0",
+        "html-webpack-plugin": "^5.5.0",
         "install": "^0.13.0",
         "mini-css-extract-plugin": "^2.5.3",
         "sass": "^1.49.9",
