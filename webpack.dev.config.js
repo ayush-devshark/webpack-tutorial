@@ -1,17 +1,15 @@
 const path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'bundle.[contenthash].js', // for caching
+        filename: 'bundle.js', // for caching
         path: path.resolve(__dirname, './dist'), // absolute path
         publicPath: '', // creates path to static files
     },
-    mode: 'none',
+    mode: 'development',
     module: {
         // everytime we import an png or jpg file, webpack will check if we hav rule for it. If not a suitable rule, will give an error = "don't know how to import this file"
         rules: [
@@ -30,11 +28,11 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                use: ['style-loader', 'css-loader'],
             },
             {
                 test: /\.scss$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+                use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.js$/,
@@ -51,8 +49,6 @@ module.exports = {
         ],
     },
     plugins: [
-        new TerserPlugin(), // minimise JS
-        new MiniCssExtractPlugin({filename: 'styles.[contenthash].css'}),
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: [
                 '**/*', // remove all files, subfolders inside output folder (i.e. dist folder)
