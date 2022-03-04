@@ -15,6 +15,7 @@ module.exports = {
         // optimisation for external library like lodash
         splitChunks: {
             chunks: 'all',
+            minSize: 3000,
         },
     },
     module: {
