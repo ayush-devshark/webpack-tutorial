@@ -11,6 +11,12 @@ module.exports = {
         publicPath: '', // creates path to static files
     },
     mode: 'production',
+    optimization: {
+        // optimisation for external library like lodash
+        splitChunks: {
+            chunks: 'all',
+        },
+    },
     module: {
         // everytime we import an png or jpg file, webpack will check if we hav rule for it. If not a suitable rule, will give an error = "don't know how to import this file"
         rules: [
