@@ -58,9 +58,20 @@ module.exports = {
             ],
         }),
         new HTMLWebpackPlugin({
+            filename: 'hello-world.html',
+            chunks: ['hello-world'],
             title: 'Hello World',
-            template: 'src/index.hbs',
-            description: 'Some description',
+            template: 'src/page-template.hbs',
+            description: 'Hello World',
+            minify: false, // by default set to true in producation mode
+        }),
+        new HTMLWebpackPlugin({
+            filename: 'mock-image.html',
+            chunks: ['mock'],
+            title: 'Mock Image',
+            template: 'src/page-template.hbs',
+            description: 'mock image',
+            minify: false,
         }),
     ],
 };
