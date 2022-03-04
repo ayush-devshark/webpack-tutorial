@@ -4,9 +4,9 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: {'hello-world': './src/hello-world.js', mock: './src/mock.js'},
     output: {
-        filename: 'bundle.[contenthash].js', // for caching
+        filename: '[name].[contenthash].js', // for caching
         path: path.resolve(__dirname, './dist'), // absolute path
         publicPath: '', // creates path to static files
     },
@@ -50,7 +50,7 @@ module.exports = {
         ],
     },
     plugins: [
-        new MiniCssExtractPlugin({filename: 'styles.[contenthash].css'}),
+        new MiniCssExtractPlugin({filename: '[name].[contenthash].css'}),
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: [
                 '**/*', // remove all files, subfolders inside output folder (i.e. dist folder)
