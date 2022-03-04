@@ -3,9 +3,9 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: {'hello-world': './src/hello-world.js', mock: './src/mock.js'},
     output: {
-        filename: 'bundle.js', // for caching
+        filename: '[name].js', // for caching
         path: path.resolve(__dirname, './dist'), // absolute path
         publicPath: '', // creates path to static files
     },
@@ -66,9 +66,18 @@ module.exports = {
             ],
         }),
         new HTMLWebpackPlugin({
+            filename: 'hello-world.html',
+            chunks: ['hello-world'],
             title: 'Hello World',
-            template: 'src/index.hbs',
-            description: 'Some description',
+            template: 'src/page-template.hbs',
+            description: 'Hello World',
+        }),
+        new HTMLWebpackPlugin({
+            filename: 'mock-image.html',
+            chunks: ['mock'],
+            title: 'Mock Image',
+            template: 'src/page-template.hbs',
+            description: 'mock image',
         }),
     ],
 };
